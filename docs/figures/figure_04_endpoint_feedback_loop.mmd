@@ -1,0 +1,10 @@
+%% Mermaid diagram: Endpoint Feedback Loop
+flowchart TD
+    A[Endpoint agent syncs confirmed entries] --> B[Collect local telemetry]
+    B --> C[Combine intelligence with telemetry]
+    C --> D[Classify event and decide]
+    D --> E{Malicious or suspicious?}
+    E -- Yes --> F[Apply remediation]
+    F --> G[Generate sanitized telemetry]
+    G --> H[Submit digest to evidence store and ledger]
+    E -- No --> I[Continue monitoring]

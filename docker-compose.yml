@@ -1,0 +1,170 @@
+services:
+  bootstrap:
+    build: .
+    command: python -m avchain.scripts.generate_keys 3 /runtime
+    volumes:
+      - ./runtime:/runtime
+
+  ledger:
+    build: .
+    command: uvicorn avchain.ledger.service:app --host 0.0.0.0 --port 8000
+    environment:
+      DATABASE_URL: sqlite:////data/ledger.db
+      EVIDENCE_DIR: /evidence
+      LEDGER_API_KEY: ${LEDGER_API_KEY:-dev-ledger-key}
+    volumes:
+      - ledger_data:/data
+      - evidence_data:/evidence
+    ports:
+      - "127.0.0.1:8000:8000"
+
+  evidence:
+    build: .
+    command: uvicorn avchain.evidence.service:app --host 0.0.0.0 --port 8001
+    environment:
+      DATABASE_URL: sqlite:////data/ledger.db
+      EVIDENCE_DIR: /evidence
+      EVIDENCE_API_KEY: ${EVIDENCE_API_KEY:-dev-evidence-key}
+    volumes:
+      - ledger_data:/data
+      - evidence_data:/evidence
+    ports:
+      - "127.0.0.1:8001:8001"
+    depends_on:
+      - ledger
+
+  consensus:
+    build: .
+    command: uvicorn avchain.consensus.service:app --host 0.0.0.0 --port 8002
+    environment:
+      DATABASE_URL: sqlite:////data/ledger.db
+      CONSENSUS_API_KEY: ${CONSENSUS_API_KEY:-dev-consensus-key}
+      LEDGER_API_KEY: ${LEDGER_API_KEY:-dev-ledger-key}
+      LEDGER_BASE_URL: http://ledger:8000
+      VALIDATOR_REGISTRY_PATH: /runtime/validators.yaml
+    volumes:
+      - ledger_data:/data
+      - ./runtime:/runtime
+    ports:
+      - "127.0.0.1:8002:8002"
+    depends_on:
+      bootstrap:
+        condition: service_completed_successfully
+      ledger:
+        condition: service_started
+
+  coverage:
+    build: .
+    command: uvicorn avchain.coverage.service:app --host 0.0.0.0 --port 8003
+    environment:
+      DATABASE_URL: sqlite:////data/ledger.db
+      COVERAGE_API_KEY: ${COVERAGE_API_KEY:-dev-coverage-key}
+      CONSENSUS_API_KEY: ${CONSENSUS_API_KEY:-dev-consensus-key}
+      CONSENSUS_BASE_URL: http://consensus:8002
+    volumes:
+      - ledger_data:/data
+    ports:
+      - "127.0.0.1:8003:8003"
+    depends_on:
+      - consensus
+
+  validator1:
+    build: .
+    command: python -m avchain.validator.worker validator1 /runtime/keys/validator1_key.pem
+    environment:
+      LEDGER_BASE_URL: http://ledger:8000
+      EVIDENCE_BASE_URL: http://evidence:8001
+      CONSENSUS_BASE_URL: http://consensus:8002
+      LEDGER_API_KEY: ${LEDGER_API_KEY:-dev-ledger-key}
+      EVIDENCE_API_KEY: ${EVIDENCE_API_KEY:-dev-evidence-key}
+      CONSENSUS_API_KEY: ${CONSENSUS_API_KEY:-dev-consensus-key}
+      VALIDATOR_REGISTRY_PATH: /runtime/validators.yaml
+    volumes:
+      - ./runtime:/runtime
+    depends_on:
+      bootstrap:
+        condition: service_completed_successfully
+      ledger:
+        condition: service_started
+      evidence:
+        condition: service_started
+      consensus:
+        condition: service_started
+
+  validator2:
+    build: .
+    command: python -m avchain.validator.worker validator2 /runtime/keys/validator2_key.pem
+    environment:
+      LEDGER_BASE_URL: http://ledger:8000
+      EVIDENCE_BASE_URL: http://evidence:8001
+      CONSENSUS_BASE_URL: http://consensus:8002
+      LEDGER_API_KEY: ${LEDGER_API_KEY:-dev-ledger-key}
+      EVIDENCE_API_KEY: ${EVIDENCE_API_KEY:-dev-evidence-key}
+      CONSENSUS_API_KEY: ${CONSENSUS_API_KEY:-dev-consensus-key}
+      VALIDATOR_REGISTRY_PATH: /runtime/validators.yaml
+    volumes:
+      - ./runtime:/runtime
+    depends_on:
+      bootstrap:
+        condition: service_completed_successfully
+      ledger:
+        condition: service_started
+      evidence:
+        condition: service_started
+      consensus:
+        condition: service_started
+
+  validator3:
+    build: .
+    command: python -m avchain.validator.worker validator3 /runtime/keys/validator3_key.pem
+    environment:
+      LEDGER_BASE_URL: http://ledger:8000
+      EVIDENCE_BASE_URL: http://evidence:8001
+      CONSENSUS_BASE_URL: http://consensus:8002
+      LEDGER_API_KEY: ${LEDGER_API_KEY:-dev-ledger-key}
+      EVIDENCE_API_KEY: ${EVIDENCE_API_KEY:-dev-evidence-key}
+      CONSENSUS_API_KEY: ${CONSENSUS_API_KEY:-dev-consensus-key}
+      VALIDATOR_REGISTRY_PATH: /runtime/validators.yaml
+    volumes:
+      - ./runtime:/runtime
+    depends_on:
+      bootstrap:
+        condition: service_completed_successfully
+      ledger:
+        condition: service_started
+      evidence:
+        condition: service_started
+      consensus:
+        condition: service_started
+
+  agent:
+    build: .
+    command: python -m avchain.agent.worker
+    environment:
+      LEDGER_BASE_URL: http://ledger:8000
+      EVIDENCE_BASE_URL: http://evidence:8001
+      LEDGER_API_KEY: ${LEDGER_API_KEY:-dev-ledger-key}
+      EVIDENCE_API_KEY: ${EVIDENCE_API_KEY:-dev-evidence-key}
+      AGENT_API_KEY: ${AGENT_API_KEY:-dev-agent-key}
+      VALIDATOR_REGISTRY_PATH: /runtime/validators.yaml
+    volumes:
+      - ./runtime:/runtime
+    depends_on:
+      - ledger
+      - evidence
+
+  dashboard:
+    build: .
+    command: streamlit run src/avchain/dashboard/app.py --server.port 8501 --server.headless true
+    environment:
+      DATABASE_URL: sqlite:////data/ledger.db
+    volumes:
+      - ledger_data:/data
+    ports:
+      - "127.0.0.1:8501:8501"
+    depends_on:
+      - ledger
+
+volumes:
+  ledger_data:
+  evidence_data:

@@ -1,0 +1,37 @@
+%% Semantic source. The companion SVG/PNG uses render_diagrams.py for stable layout.
+%% Aligned with the incident flow contracts; see README.md for limits.
+sequenceDiagram
+  autonumber
+  participant A as IncidentNode A
+  participant M as LLM local (A/B)
+  participant K as KnowledgeStore
+  participant B as IncidentNode B
+  participant P as LocalApproval
+  participant X as ScopedExecutor
+  Note over A,K: 1. Crear conocimiento validado
+  Note over A: Catálogo de acciones preparado por operador
+  A->>M: Evidencia sin confianza + catálogo previo
+  M-->>A: Bindings propuestos, sin autoridad
+  A->>K: Paquete + evidencia de A + firmas de validadores
+  Note over K: Comprobar quórum, Ed25519, TTL y versión
+  K->>K: Persistir paquete aprobado y evidencia
+  Note over B,K: 2. Reutilizar en otra variante
+  B->>K: Consultar paquete vigente
+  K-->>B: Paquete verificado vN
+  B->>M: Evidencia de variante + IDs de acción aprobados
+  M-->>B: Mapeo local; sin acciones nuevas
+  Note over B,X: 3. Autorizar y comprobar cada acción local
+  B->>P: Plan, alcance y hashes exactos
+  P-->>B: Autorización local vinculada al plan
+  B->>K: Revalidar versión y revocación antes de escribir
+  Note over B,K: Si cambió el paquete: investigar y aprobar de nuevo
+  B->>X: Ejecutar plan validado
+  X->>X: Precheck; aplicar acción tipada; postcheck
+  alt Postcheck correcto
+    X-->>B: Resultado aplicado y verificable
+  else Fallo tras la modificación
+    X->>X: Intentar restauración y registrar su resultado
+    X-->>B: Fallo y estado del rollback
+  end
+  B->>K: Resultado y evidencia; no aprueba una nueva versión
+  Note over A,X: PoC controlada. Los dobles de prueba no demuestran una inferencia LLM real.

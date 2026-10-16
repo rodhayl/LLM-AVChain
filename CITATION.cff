@@ -1,0 +1,18 @@
+cff-version: 1.2.0
+title: "LLM-AVChain"
+message: "If you use this repository in research, please cite the repository and the accompanying paper."
+type: software
+authors:
+  - family-names: "Munoz Sanchez"
+    given-names: "David"
+license: "Apache-2.0"
+abstract: >-
+  LLM-AVChain is a lifecycle-governed cyber threat intelligence proof-of-concept
+  that combines digest-bound evidence, signed validator proposals, consensus,
+  endpoint feedback, and bounded local-LLM expansion slices.
+keywords:
+  - cyber threat intelligence
+  - threat lifecycle
+  - consensus
+  - endpoint security
+  - large language models

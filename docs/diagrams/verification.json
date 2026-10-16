@@ -1,0 +1,35 @@
+{
+  "status": "passed",
+  "checks": [
+    {
+      "file": "01_incident_learning_overview_es",
+      "dimensions": [
+        1500,
+        1040
+      ],
+      "text_elements_within_canvas": 36,
+      "svg_sha256": "8ee398c3569d61236bc49966636e921af66aebc91ab07964a0eebf9e1b4bbe4e",
+      "png_sha256": "437b454b03c11b8a92a61061e001b690f5bed19d354e95250582c73146989107"
+    },
+    {
+      "file": "02_incident_components_es",
+      "dimensions": [
+        1920,
+        1460
+      ],
+      "text_elements_within_canvas": 59,
+      "svg_sha256": "9d7970473b20cfd9f79b55181ff7e2c9a557759a84f99b17c78604cd83b3d2f3",
+      "png_sha256": "bb782357f89c015d3ddf8b06490a551beefbb1172bc5f8c42f6047083adfc729"
+    },
+    {
+      "file": "03_incident_sequence_es",
+      "dimensions": [
+        1920,
+        1880
+      ],
+      "text_elements_within_canvas": 43,
+      "svg_sha256": "e5bb71f3b4d7b20cd6acc28d607ba2bc6e82bea0aac507a7fe36185e66d3ab66",
+      "png_sha256": "5d41a76bedd89c78530ddbb687a9431cc902dab5e7af247950cbb940595a89f4"
+    }
+  ]
+}

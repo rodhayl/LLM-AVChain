@@ -1,0 +1,99 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "llm-avchain"
+version = "0.1.0"
+description = "LLM-AVChain: Lifecycle-governed cyber threat intelligence proof-of-concept"
+readme = "README.md"
+license = {text = "Apache-2.0"}
+requires-python = ">=3.12"
+authors = [
+    {name = "David Munoz Sanchez"},
+]
+keywords = [
+    "cyber-threat-intelligence",
+    "security",
+    "consensus",
+    "threat-lifecycle",
+    "llm",
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Science/Research",
+    "Intended Audience :: Information Technology",
+    "License :: OSI Approved :: Apache Software License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Security",
+    "Topic :: Scientific/Engineering",
+]
+
+dependencies = [
+    "fastapi>=0.115.0",
+    "uvicorn[standard]>=0.32.0",
+    "pydantic>=2.10.0",
+    "pydantic-settings>=2.7.0",
+    "sqlalchemy>=2.0.36",
+    "cryptography>=50.0.0",
+    "httpx>=0.28.0",
+    "python-dotenv>=1.2.2",
+    "python-multipart>=0.0.31",
+    "pyyaml>=6.0.0",
+    "streamlit>=1.54.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "ruff>=0.9.0",
+    "mypy>=1.14.0",
+    "pre-commit>=4.0.0",
+    "types-PyYAML>=6.0.12",
+]
+test = [
+    "hatchling>=1.27.0",
+    "pytest>=8.3.0",
+    "pytest-asyncio>=0.25.0",
+    "pytest-cov>=6.0.0",
+    "faker>=33.0.0",
+]
+
+[tool.hatch.build.targets.sdist]
+# Source distributions are build inputs, not copies of the laboratory workspace.
+include = ["/src/avchain/**/*.py", "/pyproject.toml", "/README.md", "/LICENSE"]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/avchain"]
+
+[tool.ruff]
+line-length = 88
+target-version = "py312"
+exclude = [".venv", "build", "dist", "repo_seed"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "N", "W", "UP", "B", "SIM"]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/conftest.py" = ["I001"]
+"tests/unit/test_runtime_branches.py" = ["I001"]
+
+[tool.mypy]
+python_version = "3.12"
+strict = true
+ignore_missing_imports = true
+warn_return_any = true
+warn_unused_configs = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "--strict-markers -q"
+asyncio_mode = "auto"
+filterwarnings = ["error"]
+markers = ["e2e: end-to-end runtime verification"]
+
+[tool.coverage.run]
+omit = [
+    "src/avchain/dashboard/*",
+    "src/avchain/scripts/*",
+]

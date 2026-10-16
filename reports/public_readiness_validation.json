@@ -1,0 +1,55 @@
+{
+  "date_utc": "2026-10-16",
+  "scope": "Sanitized research-source snapshot; no production-security or general detection claim",
+  "validated_input_manifest_sha256": "f0b7e9bff589793e504f3b0efabb67b0f70865b9372acfc8eda59048887a9fdb",
+  "validated_input_count": 145,
+  "python": "3.12.14 Linux x86_64",
+  "tests": {
+    "passed": 397,
+    "failed": 0,
+    "skipped": [
+      "tests.e2e.test_windows_launchers::test_skip_install_preserves_unusable_environment[False-False]",
+      "tests.e2e.test_windows_launchers::test_skip_install_preserves_unusable_environment[False-True]",
+      "tests.e2e.test_windows_launchers::test_skip_install_preserves_unusable_environment[True-False]",
+      "tests.e2e.test_windows_launchers::test_skip_install_preserves_unusable_environment[True-True]",
+      "tests.e2e.test_windows_launchers::test_windows_launchers_keep_background_workers_active"
+    ],
+    "coverage_percent": 92.56,
+    "command": "python -m pytest --cov=src/avchain --cov-fail-under=80",
+    "environment": "Inherited proxy variables removed only for loopback test processes; external/model socket guard enabled in test process"
+  },
+  "ruff": "PASS",
+  "format": "PASS; 140 Python files",
+  "mypy": "PASS; 86 source files; one-process cached check",
+  "pip_check": "PASS",
+  "local_launcher_browser": "PASS; actual supervisor startup, 127.0.0.1:8501 socket, Chromium dashboard rendered through Runtime Status, no page errors",
+  "docker_context_license_regression": "PASS; original Docker-context wheel omitted LICENSE; corrected context wheel contains exact full LICENSE",
+  "packages": [
+    {
+      "name": "llm_avchain-0.1.0-py3-none-any.whl",
+      "sha256": "0ba32ba41d3ae126cb342d7987aead924073b1754b78ca3f7682e87f6fab12bb",
+      "members": 90,
+      "project_license_exact": true,
+      "source_modules_exact": 86
+    },
+    {
+      "name": "llm_avchain-0.1.0.tar.gz",
+      "sha256": "4414caf98f5ca3b71ff9f551915498a09defdd8d5297671eebd83cf6cd437b34",
+      "members": 91,
+      "project_license_exact": true,
+      "source_modules_exact": 86
+    }
+  ],
+  "historical_signed_fixtures": "Original incident/verification bytes preserved; provenance report is an explicitly hash-pinned public derivative",
+  "ci": "Prepared ephemeral ubuntu-24.04, read-only token, pinned official actions, one package build and short deterministic smoke; no remote run or artifact upload performed",
+  "not_run": [
+    "Native Windows launcher tests (5 cases)",
+    "Docker daemon image/Compose runtime acceptance",
+    "GitHub-hosted workflow transport run",
+    "Full dependency-minimum and cross-platform matrix",
+    "Fresh live-model/native incident campaign"
+  ],
+  "dependency_advisory_evidence": "Existing 2026-10-15 resolution review reused; attempted 2026-10-16 refresh was blocked by network policy and is not a clean fresh scan",
+  "publication_gate": "HOLD: remote history and host-managed surfaces must be verified clean before claiming complete historical removal; platform checks above remain unverified",
+  "absolute_assurance": false
+}

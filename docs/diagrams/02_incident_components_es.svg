@@ -1,0 +1,103 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1460" viewBox="0 0 1920 1460" role="img" aria-labelledby="title desc">
+<title id="title">LLM-AVChain: componentes y límites de confianza</title><desc id="desc">Flujo de datos y controles del recorrido de incidentes: recogida acotada, inferencia local no confiable, aprobación firmada, almacén versionado y ejecución local tipada con restauración ante fallo.</desc>
+<defs>
+<marker id="arrow-ink" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M 0 0 L 9 5 L 0 10 z" fill="#152B43"/></marker>
+<marker id="arrow-blue" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M 0 0 L 9 5 L 0 10 z" fill="#147CAA"/></marker>
+<marker id="arrow-purple" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M 0 0 L 9 5 L 0 10 z" fill="#7455B7"/></marker>
+<marker id="arrow-green" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M 0 0 L 9 5 L 0 10 z" fill="#247C66"/></marker>
+<marker id="arrow-amber" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M 0 0 L 9 5 L 0 10 z" fill="#A56110"/></marker>
+<marker id="arrow-red" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M 0 0 L 9 5 L 0 10 z" fill="#A5454A"/></marker>
+<marker id="arrow-muted" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M 0 0 L 9 5 L 0 10 z" fill="#52667C"/></marker>
+</defs>
+<rect x="0" y="0" width="1920" height="1460" rx="0" fill="#F5F7FB"/>
+<rect x="60" y="35" width="235" height="36" rx="18" fill="#E5EAF4"/>
+<text x="177.5" y="60" font-family="DejaVu Sans, sans-serif" font-size="18" fill="#52667C" font-weight="600" text-anchor="middle">VISTA TÉCNICA · 1/2</text>
+<text x="60" y="122" font-family="DejaVu Sans, sans-serif" font-size="44" fill="#152B43" font-weight="700" text-anchor="start">Componentes y límites de confianza</text>
+<text x="60" y="170" font-family="DejaVu Sans, sans-serif" font-size="25" fill="#52667C" font-weight="400" text-anchor="start">Flujo de datos y controles del recorrido de incidentes</text>
+<rect x="60" y="214" width="1800" height="105" rx="20" fill="#FFF3E2" stroke="#EAD0AE" stroke-width="1.5"/>
+<text x="90" y="257" font-family="DejaVu Sans, sans-serif" font-size="20" fill="#A56110" font-weight="700" text-anchor="start">ENTRADAS SIN CONFIANZA</text>
+<text x="90" y="293" font-family="DejaVu Sans, sans-serif" font-size="25" fill="#152B43" font-weight="400" text-anchor="start">Archivos, eventos y texto externo son evidencia; sus instrucciones no conceden permisos.</text>
+<line x1="320" y1="319" x2="320" y2="375" stroke="#A56110" stroke-width="2.5" marker-end="url(#arrow-amber)"/>
+<line x1="1600" y1="319" x2="1600" y2="375" stroke="#A56110" stroke-width="2.5" marker-end="url(#arrow-amber)"/>
+<rect x="60" y="375" width="520" height="738" rx="20" fill="#E5F3FA" stroke="#147CAA" stroke-width="1.2"/>
+<text x="88" y="416" font-family="DejaVu Sans, sans-serif" font-size="21" fill="#147CAA" font-weight="700" text-anchor="start">NODO A</text>
+<text x="88" y="449" font-family="DejaVu Sans, sans-serif" font-size="21" fill="#52667C" font-weight="400" text-anchor="start">Primera observación</text>
+<rect x="660" y="375" width="600" height="738" rx="20" fill="#EFEAFA" stroke="#7455B7" stroke-width="1.2"/>
+<text x="688" y="416" font-family="DejaVu Sans, sans-serif" font-size="21" fill="#7455B7" font-weight="700" text-anchor="start">CENTRO COMPARTIDO</text>
+<text x="688" y="449" font-family="DejaVu Sans, sans-serif" font-size="21" fill="#52667C" font-weight="400" text-anchor="start">Validación y persistencia</text>
+<rect x="1340" y="375" width="520" height="738" rx="20" fill="#E5F3ED" stroke="#247C66" stroke-width="1.2"/>
+<text x="1368" y="416" font-family="DejaVu Sans, sans-serif" font-size="21" fill="#247C66" font-weight="700" text-anchor="start">NODO B</text>
+<text x="1368" y="449" font-family="DejaVu Sans, sans-serif" font-size="21" fill="#52667C" font-weight="400" text-anchor="start">Variante y acción local</text>
+<rect x="84" y="480" width="472" height="140" rx="14" fill="white" stroke="#D6E0EA" stroke-width="1.5"/>
+<text x="106" y="518" font-family="DejaVu Sans, sans-serif" font-size="24" fill="#147CAA" font-weight="700" text-anchor="start">IncidentCollector</text>
+<text x="106" y="557" font-family="DejaVu Sans, sans-serif" font-size="21" fill="#152B43" font-weight="400" text-anchor="start">Raíz permitida · lectura acotada</text>
+<text x="106" y="588" font-family="DejaVu Sans, sans-serif" font-size="21" fill="#152B43" font-weight="400" text-anchor="start">Evidencia y hashes</text>
+<rect x="84" y="665" width="472" height="166" rx="14" fill="white" stroke="#D6E0EA" stroke-width="1.5"/>
+<text x="106" y="703" font-family="DejaVu Sans, sans-serif" font-size="24" fill="#147CAA" font-weight="700" text-anchor="start">IncidentTriage</text>
+<text x="106" y="742" font-family="DejaVu Sans, sans-serif" font-size="21" fill="#152B43" font-weight="400" text-anchor="start">LLM local + catálogo autorizado</text>
+<text x="106" y="773" font-family="DejaVu Sans, sans-serif" font-size="21" fill="#152B43" font-weight="400" text-anchor="start">Enlaza evidencia con IDs existentes</text>
+<text x="106" y="804" font-family="DejaVu Sans, sans-serif" font-size="21" fill="#152B43" font-weight="400" text-anchor="start">No crea código, permisos ni firmas</text>
+<rect x="84" y="876" width="472" height="174" rx="14" fill="white" stroke="#D6E0EA" stroke-width="1.5"/>
+<text x="106" y="914" font-family="DejaVu Sans, sans-serif" font-size="24" fill="#147CAA" font-weight="700" text-anchor="start">RemediationPackage</text>
+<text x="106" y="953" font-family="DejaVu Sans, sans-serif" font-size="21" fill="#152B43" font-weight="400" text-anchor="start">Borrador del operador/catálogo</text>
+<text x="106" y="984" font-family="DejaVu Sans, sans-serif" font-size="21" fill="#152B43" font-weight="400" text-anchor="start">Con evidencia y análisis del nodo A</text>
+<text x="106" y="1015" font-family="DejaVu Sans, sans-serif" font-size="21" fill="#152B43" font-weight="400" text-anchor="start">Versión · vigencia · acciones fijas</text>
+<line x1="320" y1="620" x2="320" y2="652" stroke="#147CAA" stroke-width="2" marker-end="url(#arrow-blue)"/>
+<line x1="320" y1="831" x2="320" y2="863" stroke="#147CAA" stroke-width="2" marker-end="url(#arrow-blue)"/>
+<text x="340" y="856" font-family="DejaVu Sans, sans-serif" font-size="16" fill="#147CAA" font-weight="400" text-anchor="start">enriquece</text>
+<rect x="684" y="480" width="552" height="140" rx="14" fill="white" stroke="#D6E0EA" stroke-width="1.5"/>
+<text x="706" y="518" font-family="DejaVu Sans, sans-serif" font-size="24" fill="#7455B7" font-weight="700" text-anchor="start">ValidatorApproval</text>
+<text x="706" y="557" font-family="DejaVu Sans, sans-serif" font-size="21" fill="#152B43" font-weight="400" text-anchor="start">Validadores de confianza</text>
+<text x="706" y="588" font-family="DejaVu Sans, sans-serif" font-size="21" fill="#152B43" font-weight="400" text-anchor="start">Firmas Ed25519 sobre el paquete</text>
+<rect x="684" y="665" width="552" height="166" rx="14" fill="white" stroke="#D6E0EA" stroke-width="1.5"/>
+<text x="706" y="703" font-family="DejaVu Sans, sans-serif" font-size="24" fill="#7455B7" font-weight="700" text-anchor="start">KnowledgeStore</text>
+<text x="706" y="742" font-family="DejaVu Sans, sans-serif" font-size="21" fill="#152B43" font-weight="400" text-anchor="start">Quórum + firmas + caducidad</text>
+<text x="706" y="773" font-family="DejaVu Sans, sans-serif" font-size="21" fill="#152B43" font-weight="400" text-anchor="start">Revocación + versión monotónica</text>
+<text x="706" y="804" font-family="DejaVu Sans, sans-serif" font-size="21" fill="#152B43" font-weight="400" text-anchor="start">Entrada confirmed + evidencia</text>
+<rect x="684" y="876" width="552" height="174" rx="14" fill="white" stroke="#D6E0EA" stroke-width="1.5"/>
+<text x="706" y="914" font-family="DejaVu Sans, sans-serif" font-size="24" fill="#7455B7" font-weight="700" text-anchor="start">Ledger SQL + evidencia</text>
+<text x="706" y="953" font-family="DejaVu Sans, sans-serif" font-size="21" fill="#152B43" font-weight="400" text-anchor="start">Paquete aprobado y evidencia vinculada</text>
+<text x="706" y="984" font-family="DejaVu Sans, sans-serif" font-size="21" fill="#152B43" font-weight="400" text-anchor="start">Historial auditable de decisiones</text>
+<text x="706" y="1015" font-family="DejaVu Sans, sans-serif" font-size="21" fill="#152B43" font-weight="400" text-anchor="start">Persistencia del repositorio existente</text>
+<line x1="960" y1="620" x2="960" y2="652" stroke="#7455B7" stroke-width="2" marker-end="url(#arrow-purple)"/>
+<line x1="960" y1="831" x2="960" y2="863" stroke="#7455B7" stroke-width="2" marker-end="url(#arrow-purple)"/>
+<rect x="1364" y="480" width="472" height="166" rx="14" fill="white" stroke="#D6E0EA" stroke-width="1.5"/>
+<text x="1386" y="518" font-family="DejaVu Sans, sans-serif" font-size="24" fill="#247C66" font-weight="700" text-anchor="start">IncidentNode</text>
+<text x="1386" y="557" font-family="DejaVu Sans, sans-serif" font-size="21" fill="#152B43" font-weight="400" text-anchor="start">KnowledgeClient: firma + versión</text>
+<text x="1386" y="588" font-family="DejaVu Sans, sans-serif" font-size="21" fill="#152B43" font-weight="400" text-anchor="start">IncidentTriage: bindings locales</text>
+<text x="1386" y="619" font-family="DejaVu Sans, sans-serif" font-size="21" fill="#152B43" font-weight="400" text-anchor="start">Sin acciones nuevas ni código</text>
+<rect x="1364" y="691" width="472" height="140" rx="14" fill="white" stroke="#D6E0EA" stroke-width="1.5"/>
+<text x="1386" y="729" font-family="DejaVu Sans, sans-serif" font-size="24" fill="#247C66" font-weight="700" text-anchor="start">LocalApproval</text>
+<text x="1386" y="768" font-family="DejaVu Sans, sans-serif" font-size="21" fill="#152B43" font-weight="400" text-anchor="start">Incidente · paquete · bindings · raíz</text>
+<text x="1386" y="799" font-family="DejaVu Sans, sans-serif" font-size="21" fill="#152B43" font-weight="400" text-anchor="start">Caducidad; externa al modelo</text>
+<rect x="1364" y="876" width="472" height="174" rx="14" fill="white" stroke="#D6E0EA" stroke-width="1.5"/>
+<text x="1386" y="914" font-family="DejaVu Sans, sans-serif" font-size="24" fill="#247C66" font-weight="700" text-anchor="start">ScopedExecutor</text>
+<text x="1386" y="953" font-family="DejaVu Sans, sans-serif" font-size="21" fill="#152B43" font-weight="400" text-anchor="start">disable_npm_hook / quarantine_file</text>
+<text x="1386" y="984" font-family="DejaVu Sans, sans-serif" font-size="21" fill="#152B43" font-weight="400" text-anchor="start">Precheck → aplicar → postcheck</text>
+<text x="1386" y="1015" font-family="DejaVu Sans, sans-serif" font-size="21" fill="#152B43" font-weight="400" text-anchor="start">Hashes exactos · journal local</text>
+<line x1="1600" y1="646" x2="1600" y2="678" stroke="#247C66" stroke-width="2" marker-end="url(#arrow-green)"/>
+<line x1="1600" y1="831" x2="1600" y2="863" stroke="#247C66" stroke-width="2" marker-end="url(#arrow-green)"/>
+<path d="M 556 965 L 608 965 L 608 550 L 670 550" fill="none" stroke="#7455B7" stroke-width="2.5" stroke-linejoin="round" marker-end="url(#arrow-purple)"/>
+<path d="M 1236 748 L 1300 748 L 1300 562 L 1351 562" fill="none" stroke="#247C66" stroke-width="2.5" stroke-linejoin="round" marker-end="url(#arrow-green)"/>
+<rect x="580" y="698" width="56" height="90" rx="10" fill="#F5F7FB"/>
+<text x="608" y="730" font-family="DejaVu Sans, sans-serif" font-size="18" fill="#7455B7" font-weight="600" text-anchor="middle">plan</text>
+<text x="608" y="757" font-family="DejaVu Sans, sans-serif" font-size="18" fill="#7455B7" font-weight="600" text-anchor="middle">vN</text>
+<rect x="1273" y="621" width="53" height="62" rx="10" fill="#F5F7FB"/>
+<text x="1300" y="648" font-family="DejaVu Sans, sans-serif" font-size="18" fill="#247C66" font-weight="600" text-anchor="middle">vN</text>
+<text x="1300" y="671" font-family="DejaVu Sans, sans-serif" font-size="20" fill="#247C66" font-weight="600" text-anchor="middle">✓</text>
+<path d="M 1510 1050 L 1510 1084 L 1110 1084 L 1110 1050" fill="none" stroke="#247C66" stroke-width="2" stroke-linejoin="round" stroke-dasharray="7 5" marker-end="url(#arrow-green)"/>
+<rect x="1163" y="1067" width="271" height="34" rx="0" fill="#E5F3ED"/>
+<text x="1298" y="1091" font-family="DejaVu Sans, sans-serif" font-size="19" fill="#247C66" font-weight="600" text-anchor="middle">Resultado + evidencia</text>
+<rect x="60" y="1154" width="1200" height="182" rx="20" fill="white" stroke="#D6E0EA" stroke-width="1.5"/>
+<text x="88" y="1199" font-family="DejaVu Sans, sans-serif" font-size="20" fill="#152B43" font-weight="700" text-anchor="start">DOS AUTORIZACIONES DISTINTAS</text>
+<text x="88" y="1243" font-family="DejaVu Sans, sans-serif" font-size="23" fill="#52667C" font-weight="400" text-anchor="start">La aprobación central permite compartir conocimiento.</text>
+<text x="88" y="1277" font-family="DejaVu Sans, sans-serif" font-size="23" fill="#52667C" font-weight="400" text-anchor="start">La aprobación local autoriza una actuación concreta en ese nodo.</text>
+<text x="88" y="1311" font-family="DejaVu Sans, sans-serif" font-size="23" fill="#52667C" font-weight="400" text-anchor="start">El LLM no firma aprobaciones ni decide permisos.</text>
+<rect x="1340" y="1154" width="520" height="182" rx="20" fill="#FFF3E2" stroke="#EAD0AE" stroke-width="1.5"/>
+<text x="1368" y="1199" font-family="DejaVu Sans, sans-serif" font-size="20" fill="#A56110" font-weight="700" text-anchor="start">SI FALLA LA COMPROBACIÓN</text>
+<text x="1368" y="1243" font-family="DejaVu Sans, sans-serif" font-size="22" fill="#152B43" font-weight="400" text-anchor="start">Intentar restaurar el estado previo.</text>
+<text x="1368" y="1277" font-family="DejaVu Sans, sans-serif" font-size="22" fill="#152B43" font-weight="400" text-anchor="start">Guardar también fallos de rollback.</text>
+<text x="1368" y="1311" font-family="DejaVu Sans, sans-serif" font-size="22" fill="#152B43" font-weight="400" text-anchor="start">No declarar éxito sin postcheck.</text>
+<line x1="1600" y1="1113" x2="1600" y2="1141" stroke="#A56110" stroke-width="2" marker-end="url(#arrow-amber)"/>
+<text x="60" y="1402" font-family="DejaVu Sans, sans-serif" font-size="21" fill="#52667C" font-weight="400" text-anchor="start">Alcance: PoC local controlada. El backend LLM real y cada acción deben acreditarse con su evidencia de ejecución.</text>
+</svg>

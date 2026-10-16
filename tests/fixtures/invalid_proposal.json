@@ -1,0 +1,10 @@
+{
+  "proposal_id": "1234abcd",
+  "entry_id": "00000000-0000-0000-0000-000000000000",
+  "validator_id": "unknown_validator",
+  "action": "promote",
+  "confidence": 0.9,
+  "explanation": "Test invalid signature",
+  "timestamp": "2026-04-08T09:15:00Z",
+  "signature": "invalidsignature=="
+}

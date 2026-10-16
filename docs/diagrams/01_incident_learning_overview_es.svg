@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1500" height="1040" viewBox="0 0 1500 1040" role="img" aria-labelledby="title desc">
+<title id="title">LLM-AVChain: de un incidente local a una defensa compartida</title><desc id="desc">Un nodo A recoge un incidente y propone una respuesta con un LLM. El centro valida y firma conocimiento versionado. El nodo B comprueba su variante y aplica solo acciones aprobadas localmente. Resultados y fallos vuelven como evidencia.</desc>
+<defs>
+<marker id="arrow-ink" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M 0 0 L 9 5 L 0 10 z" fill="#152B43"/></marker>
+<marker id="arrow-blue" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M 0 0 L 9 5 L 0 10 z" fill="#147CAA"/></marker>
+<marker id="arrow-purple" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M 0 0 L 9 5 L 0 10 z" fill="#7455B7"/></marker>
+<marker id="arrow-green" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M 0 0 L 9 5 L 0 10 z" fill="#247C66"/></marker>
+<marker id="arrow-amber" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M 0 0 L 9 5 L 0 10 z" fill="#A56110"/></marker>
+<marker id="arrow-red" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M 0 0 L 9 5 L 0 10 z" fill="#A5454A"/></marker>
+<marker id="arrow-muted" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M 0 0 L 9 5 L 0 10 z" fill="#52667C"/></marker>
+</defs>
+<rect x="0" y="0" width="1500" height="1040" rx="0" fill="#F5F7FB"/>
+<rect x="60" y="40" width="200" height="36" rx="18" fill="#E5EAF4"/>
+<text x="160.0" y="65" font-family="DejaVu Sans, sans-serif" font-size="18" fill="#52667C" font-weight="600" text-anchor="middle">VISIÓN GENERAL</text>
+<text x="60" y="129" font-family="DejaVu Sans, sans-serif" font-size="46" fill="#152B43" font-weight="700" text-anchor="start">De un incidente local</text>
+<text x="60" y="185" font-family="DejaVu Sans, sans-serif" font-size="46" fill="#152B43" font-weight="700" text-anchor="start">a una defensa compartida</text>
+<text x="60" y="230" font-family="DejaVu Sans, sans-serif" font-size="25" fill="#52667C" font-weight="400" text-anchor="start">El conocimiento viaja; el permiso de actuar es local.</text>
+<rect x="60" y="285" width="400" height="390" rx="20" fill="white" stroke="#D6E0EA" stroke-width="1.5"/>
+<rect x="60" y="285" width="400" height="10" rx="0" fill="#147CAA"/>
+<circle cx="104" cy="337" r="23" fill="#E5F3FA"/>
+<text x="104" y="345" font-family="DejaVu Sans, sans-serif" font-size="23" fill="#147CAA" font-weight="700" text-anchor="middle">1</text>
+<text x="140" y="344" font-family="DejaVu Sans, sans-serif" font-size="19" fill="#147CAA" font-weight="700" text-anchor="start">EQUIPO A</text>
+<text x="88" y="402" font-family="DejaVu Sans, sans-serif" font-size="26" fill="#152B43" font-weight="700" text-anchor="start">Observa y propone</text>
+<text x="88" y="450" font-family="DejaVu Sans, sans-serif" font-size="22" fill="#152B43" font-weight="400" text-anchor="start">Recoge señales del incidente.</text>
+<text x="88" y="484" font-family="DejaVu Sans, sans-serif" font-size="22" fill="#152B43" font-weight="400" text-anchor="start">La IA del equipo propone</text>
+<text x="88" y="518" font-family="DejaVu Sans, sans-serif" font-size="22" fill="#152B43" font-weight="400" text-anchor="start">un plan de respuesta.</text>
+<line x1="88" y1="545" x2="432" y2="545" stroke="#D6E0EA" stroke-width="2"/>
+<text x="88" y="587" font-family="DejaVu Sans, sans-serif" font-size="18" fill="#52667C" font-weight="400" text-anchor="start">Los archivos y el texto externo</text>
+<text x="88" y="615" font-family="DejaVu Sans, sans-serif" font-size="18" fill="#52667C" font-weight="400" text-anchor="start">son información por comprobar.</text>
+<rect x="550" y="285" width="400" height="390" rx="20" fill="white" stroke="#D6E0EA" stroke-width="1.5"/>
+<rect x="550" y="285" width="400" height="10" rx="0" fill="#7455B7"/>
+<circle cx="594" cy="337" r="23" fill="#EFEAFA"/>
+<text x="594" y="345" font-family="DejaVu Sans, sans-serif" font-size="23" fill="#7455B7" font-weight="700" text-anchor="middle">2</text>
+<text x="630" y="344" font-family="DejaVu Sans, sans-serif" font-size="19" fill="#7455B7" font-weight="700" text-anchor="start">CENTRO COMPARTIDO</text>
+<text x="578" y="402" font-family="DejaVu Sans, sans-serif" font-size="26" fill="#152B43" font-weight="700" text-anchor="start">Valida y conserva</text>
+<text x="578" y="450" font-family="DejaVu Sans, sans-serif" font-size="22" fill="#152B43" font-weight="400" text-anchor="start">Comprueba las aprobaciones.</text>
+<text x="578" y="484" font-family="DejaVu Sans, sans-serif" font-size="22" fill="#152B43" font-weight="400" text-anchor="start">Comparte la respuesta validada</text>
+<text x="578" y="518" font-family="DejaVu Sans, sans-serif" font-size="22" fill="#152B43" font-weight="400" text-anchor="start">y conserva su historial.</text>
+<line x1="578" y1="545" x2="922" y2="545" stroke="#D6E0EA" stroke-width="2"/>
+<text x="578" y="587" font-family="DejaVu Sans, sans-serif" font-size="18" fill="#52667C" font-weight="400" text-anchor="start">La propuesta del modelo por sí</text>
+<text x="578" y="615" font-family="DejaVu Sans, sans-serif" font-size="18" fill="#52667C" font-weight="400" text-anchor="start">sola no autoriza una acción.</text>
+<rect x="1040" y="285" width="400" height="390" rx="20" fill="white" stroke="#D6E0EA" stroke-width="1.5"/>
+<rect x="1040" y="285" width="400" height="10" rx="0" fill="#247C66"/>
+<circle cx="1084" cy="337" r="23" fill="#E5F3ED"/>
+<text x="1084" y="345" font-family="DejaVu Sans, sans-serif" font-size="23" fill="#247C66" font-weight="700" text-anchor="middle">3</text>
+<text x="1120" y="344" font-family="DejaVu Sans, sans-serif" font-size="19" fill="#247C66" font-weight="700" text-anchor="start">EQUIPO B</text>
+<text x="1068" y="402" font-family="DejaVu Sans, sans-serif" font-size="26" fill="#152B43" font-weight="700" text-anchor="start">Adapta y comprueba</text>
+<text x="1068" y="450" font-family="DejaVu Sans, sans-serif" font-size="22" fill="#152B43" font-weight="400" text-anchor="start">Reutiliza la resolución y la</text>
+<text x="1068" y="484" font-family="DejaVu Sans, sans-serif" font-size="22" fill="#152B43" font-weight="400" text-anchor="start">adapta a una variante local.</text>
+<text x="1068" y="518" font-family="DejaVu Sans, sans-serif" font-size="22" fill="#152B43" font-weight="400" text-anchor="start">Ejecuta solo acciones permitidas.</text>
+<line x1="1068" y1="545" x2="1412" y2="545" stroke="#D6E0EA" stroke-width="2"/>
+<text x="1068" y="587" font-family="DejaVu Sans, sans-serif" font-size="18" fill="#52667C" font-weight="400" text-anchor="start">Verifica el resultado; si falla,</text>
+<text x="1068" y="615" font-family="DejaVu Sans, sans-serif" font-size="18" fill="#52667C" font-weight="400" text-anchor="start">intenta restaurar el estado previo.</text>
+<line x1="470" y1="480" x2="537" y2="480" stroke="#7455B7" stroke-width="3" marker-end="url(#arrow-purple)"/>
+<line x1="960" y1="480" x2="1027" y2="480" stroke="#247C66" stroke-width="3" marker-end="url(#arrow-green)"/>
+<text x="504" y="446" font-family="DejaVu Sans, sans-serif" font-size="16" fill="#52667C" font-weight="400" text-anchor="middle">evidencia</text>
+<text x="994" y="446" font-family="DejaVu Sans, sans-serif" font-size="16" fill="#52667C" font-weight="400" text-anchor="middle">resolución</text>
+<path d="M 1240 675 L 1240 728 L 750 728 L 750 675" fill="none" stroke="#247C66" stroke-width="2.5" stroke-linejoin="round" stroke-dasharray="8 6" marker-end="url(#arrow-green)"/>
+<rect x="880" y="710" width="297" height="35" rx="0" fill="#F5F7FB"/>
+<text x="1028" y="734" font-family="DejaVu Sans, sans-serif" font-size="18" fill="#247C66" font-weight="600" text-anchor="middle">Resultado + nueva evidencia</text>
+<rect x="60" y="777" width="1380" height="170" rx="20" fill="#EAF0F7"/>
+<rect x="85" y="797" width="176" height="36" rx="18" fill="#D8E4F0"/>
+<text x="173.0" y="822" font-family="DejaVu Sans, sans-serif" font-size="17" fill="#52667C" font-weight="600" text-anchor="middle">EJEMPLO</text>
+<text x="282" y="824" font-family="DejaVu Sans, sans-serif" font-size="24" fill="#152B43" font-weight="600" text-anchor="start">Una falsa entrevista solicita ejecutar un repositorio.</text>
+<text x="86" y="870" font-family="DejaVu Sans, sans-serif" font-size="23" fill="#52667C" font-weight="400" text-anchor="start">A detecta el patrón → el centro valida la respuesta → B reconoce otra variante.</text>
+<text x="86" y="905" font-family="DejaVu Sans, sans-serif" font-size="23" fill="#52667C" font-weight="400" text-anchor="start">El mismo recorrido admite otros incidentes; este es solo un caso de demostración.</text>
+<text x="60" y="999" font-family="DejaVu Sans, sans-serif" font-size="19" fill="#52667C" font-weight="400" text-anchor="start">PoC acotada · las pruebas controladas no equivalen a protección en producción.</text>
+</svg>

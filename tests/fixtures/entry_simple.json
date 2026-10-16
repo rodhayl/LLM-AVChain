@@ -1,0 +1,17 @@
+{
+  "observables": [
+    "5e884898da28047151d0e56f8dc6292773603d0d6aabbddc1c5d08201b19a24a"
+  ],
+  "evidence": [
+    {
+      "content_type": "application/json",
+      "data": {
+        "file_name": "example.exe",
+        "label": "malicious",
+        "sha256": "5e884898da28047151d0e56f8dc6292773603d0d6aabbddc1c5d08201b19a24a"
+      }
+    }
+  ],
+  "attack_techniques": ["T1059"],
+  "tlp_label": "TLP:AMBER"
+}

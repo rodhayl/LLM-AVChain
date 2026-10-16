@@ -1,0 +1,10 @@
+%% Mermaid diagram: Validator Consensus Flow
+flowchart TD
+    A[Threat entry in Suspected/Review state] --> B[Retrieve evidence]
+    B --> C[Verify digests and derive normalized representation]
+    C --> D[LLM validator analysis]
+    D --> E[Generate signed recommendation]
+    E --> F[Consensus controller aggregates recommendations]
+    F --> G{Quorum achieved?}
+    G -- Yes --> H[Update lifecycle state]
+    G -- No --> I[Await more proposals / retain state]

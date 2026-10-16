@@ -1,0 +1,9 @@
+# Figure Captions
+
+**Figure 1 – Overall Architecture:** High‑level view of LLM‑AVChain. Threat entries and lifecycle metadata reside on a tamper‑evident ledger; evidence objects are stored off‑chain. Validator nodes retrieve evidence and issue signed recommendations that are aggregated by a consensus controller. A coverage oracle computes vendor‑diversity metrics based on reports from independent security engines. Confirmed intelligence flows to endpoint agents, which observe local telemetry, apply remediation and return sanitized feedback.
+
+**Figure 2 – Lifecycle State Machine:** State diagram illustrating the four lifecycle states—Suspected, Confirmed, Review and Deprecated—and the transitions between them. Promotions occur when a quorum of validator recommendations supports promotion. Review may be triggered by coverage signals, ageing or conflicts. Validators can reconfirm or deprecate entries based on reanalysis.
+
+**Figure 3 – Validator Consensus Flow:** Flowchart showing how validators retrieve evidence, normalise it, invoke LLM analysis, generate signed recommendations and submit them to the consensus controller. The controller checks for a quorum and updates the entry state accordingly, otherwise awaiting additional proposals.
+
+**Figure 4 – Endpoint Feedback Loop:** Flowchart depicting the endpoint agent’s workflow. The agent synchronises confirmed entries, collects local telemetry, combines it with intelligence, classifies events and takes bounded remediation actions. It then generates a sanitized telemetry digest and submits it back to the evidence store and ledger.

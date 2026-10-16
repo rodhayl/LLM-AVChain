@@ -1,0 +1,23 @@
+%% Mermaid diagram: Overall Architecture
+graph TD
+    subgraph Data_Layer["Data Layer"]
+        evidence_store[Evidence Store]
+        ledger[Ledger / Lifecycle Journal]
+    end
+    subgraph Analysis_Layer["Analysis Layer"]
+        validators[Validator Nodes\n(LLM analysis)]
+        consensus[Consensus Controller]
+        coverage[Coverage Oracle]
+    end
+    subgraph Endpoint_Layer["Endpoint Layer"]
+        agents[Endpoint Agents]
+        security_engines[Independent Security Engines]
+    end
+    evidence_store --> validators
+    ledger --> validators
+    validators --> consensus
+    consensus --> ledger
+    consensus --> agents
+    security_engines --> coverage
+    coverage --> consensus
+    agents --> ledger

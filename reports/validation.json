@@ -1,0 +1,84 @@
+{
+  "date_utc": "2026-10-15",
+  "scope": "Repository hygiene and runner-independent source/package acceptance; no fresh native/model campaign",
+  "parent_commit": "b6280ef1dc398f1a9d9f1b3a3d92e29ca286b30e",
+  "tree_changes": {
+    "deleted_files": 244,
+    "deleted_bytes": 3040555,
+    "modified_markdown_files": 13,
+    "added_files": [
+      "reports/validation.json"
+    ],
+    "tracked_files_after": 213,
+    "history_preserved": true
+  },
+  "protected_inputs": {
+    "files": 158,
+    "all_git_blob_ids_equal_parent": true,
+    "sorted_path_blob_manifest_sha256": "c4a93b1b78f2720e549e007fb115c48df77fe039830ddd5fb5fe5a6b824a281d",
+    "historical_fixture_files_unchanged": 12,
+    "pyproject_sha256": "4860a9120a398a33ba8c41a30c72392f1c356cd828076583962d64c8e4ec0ba7",
+    "license_sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
+  },
+  "reused_validation": {
+    "passed": 390,
+    "skipped": 4,
+    "deselected": 2,
+    "coverage_percent": 92.56,
+    "ruff": "pass",
+    "format": "pass",
+    "mypy": "pass",
+    "resolved_dependency_versions_matched": 80,
+    "evidence": "Historical compatibility evidence retained privately; not a public download",
+    "rerun_reason": "Runtime, tests and dependency/configuration inputs unchanged; focused cleanup/build checks supplement the earlier full suite."
+  },
+  "fresh_checks": {
+    "focused_tests": {
+      "passed": 19,
+      "failed": 0,
+      "skipped": 0,
+      "modules": [
+        "test_research_continuation",
+        "test_incident_native_abstention",
+        "test_incident_native_permission_failure",
+        "test_source_distribution",
+        "test_operational_artifacts"
+      ],
+      "external_and_model_connections_blocked": true
+    },
+    "central_demo_cli": "PASS; SIMULATED; two logical nodes; no real vendor integration",
+    "pip_check": "pass",
+    "local_markdown_links_checked": 87,
+    "immutable_historical_blob_targets_checked": 22,
+    "broken_links": 0,
+    "packages": {
+      "source_modules_exact": 86,
+      "full_apache_license_in_both": true,
+      "current_readme_in_metadata": true,
+      "wheel_record_valid": true,
+      "unexpected_payload_paths": [],
+      "sdist_rebuild_wheel_byte_identical": true,
+      "artifacts": [
+        {
+          "name": "llm_avchain-0.1.0.tar.gz",
+          "bytes": 93815,
+          "sha256": "a292ba2ede5cad7bc7be3db93a5c2826e2adb107b30efa266656fce04f95e40b",
+          "members": 91
+        },
+        {
+          "name": "llm_avchain-0.1.0-py3-none-any.whl",
+          "bytes": 126830,
+          "sha256": "18e33da4e412ae043a50caeee7dfef176dbf70bc03380d39de10ad4e6e468991",
+          "members": 90
+        }
+      ]
+    }
+  },
+  "limitations": [
+    "No GitHub-hosted workflow transport run was performed or required for these local acceptance checks.",
+    "No full dependency-minimum runtime matrix, new live-model, native Windows or production effectiveness campaign.",
+    "Repository publication and historical Actions-log disclosure remain separate decisions; normal deletions do not purge Git history.",
+    "This dated record predates the sanitized public snapshot; use public_readiness_validation.json for the new candidate."
+  ],
+  "record_kind": "historical-validation-summary"
+}

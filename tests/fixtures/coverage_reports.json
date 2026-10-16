@@ -1,0 +1,17 @@
+[
+  {
+    "vendor": "VendorA",
+    "detected": true,
+    "timestamp": "2026-04-08T09:00:00Z"
+  },
+  {
+    "vendor": "VendorB",
+    "detected": true,
+    "timestamp": "2026-04-08T09:05:00Z"
+  },
+  {
+    "vendor": "VendorC",
+    "detected": true,
+    "timestamp": "2026-04-08T09:10:00Z"
+  }
+]

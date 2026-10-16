@@ -1,0 +1,58 @@
+# Byte-compiled / optimised / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environment directories
+.venv/
+.venv-*/
+venv/
+
+# Distribution / packaging
+build/
+dist/
+.eggs/
+*.egg-info/
+*.egg
+
+# Python cache and pytest cache
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Coverage reports
+.coverage
+.coverage.*
+coverage.xml
+htmlcov/
+
+# IDE and editor settings
+.idea/
+.vscode/
+
+# Local data and evidence directories used by the POC
+/data/
+/evidence/
+/runtime/
+/keys/
+/validators.yaml
+/artifacts/
+/sandbox/
+/runtime/model_cache/
+/runtime/quarantine/
+/data/quarantine/
+/data/model_cache/
+
+# Secret or generated environment files
+.env
+
+# Logs and temporary files
+*.log
+*.tmp
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Node/npm artifacts
+node_modules/

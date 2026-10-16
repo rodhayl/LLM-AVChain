@@ -1,0 +1,50 @@
+{
+  "result": "PASS",
+  "validated_real_outputs": 4,
+  "reasoning_tokens_zero_all_responses": true,
+  "prompt_version": "incident-v4",
+  "system_prompt_sha256": "d4dd0ba222cdae3cb0aa277a94e7315add6525f042219f6965fefa4b3c832b50",
+  "draft_digest_verified": true,
+  "original_input_digest_reconstructed": true,
+  "source_case_digest": "a0597111c9f042577a7e47bbed35c067a52cc33e16b0df3226b75012af1713b5",
+  "source_incident_digest": "ef1ffa4ae4435ff0f3c5ee1f3b1f88f20c622dbedcb64af5ce68a396ca0681a5",
+  "signed_source_links_and_enriched_input_digests_verified_all_nodes": true,
+  "two_distinct_package_signatures_verified": true,
+  "package_digest": "3b46b9290de8ec2939a5d22dd386cea512e7dea7b24adb7ffadd736f3b619cd7",
+  "A_B_canaries": {
+    "node_a": [
+      1,
+      0,
+      1
+    ],
+    "node_b": [
+      1,
+      0,
+      1
+    ]
+  },
+  "A_B_operations": {
+    "node_a": [
+      "quarantine_file"
+    ],
+    "node_b": [
+      "quarantine_file"
+    ]
+  },
+  "A_B_recovery": "rolled_back",
+  "A_B_feedback": "PASS",
+  "authorized_control_verdict": "benign",
+  "authorized_control_actions": [],
+  "authorized_control_bytes_unchanged": true,
+  "authorized_control_transfer_before_after": [
+    1,
+    1
+  ],
+  "failed_checks": [],
+  "NOT_RUN": [],
+  "source_and_all_previous_evidence_hashes_unchanged": true,
+  "model_configuration_unchanged": true,
+  "automatic_retries": 0,
+  "fallback_used": false,
+  "publication_prose_and_excerpt_redactions": "retained source-case hash unchanged"
+}

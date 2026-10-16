@@ -1,0 +1,19 @@
+﻿{
+    "started":  "2026-10-11T16:56:47.2294679+02:00",
+    "model":  "slm-production-evaluation",
+    "python_version":  "3.13.15",
+    "tested_sha":  "0a05947e97aae5e8035ab47bbe20fdec845ab06b",
+    "exit_code":  0,
+    "pythonpath":  [
+                       "checkout/src",
+                       "../dependency-env-1/.venv/Lib/site-packages",
+                       "../dependency-env-2/.venv/Lib/site-packages"
+                   ],
+    "reasoning":  "off",
+    "max_tokens":  3072,
+    "interpreter":  "../dependency-env-1/.venv/Scripts/python.exe",
+    "timeout_seconds":  300,
+    "ended":  "2026-10-11T16:58:52.6973655+02:00",
+    "duration_seconds":  125.46233769999999,
+    "base_url":  "http://127.0.0.1:1234/v1"
+}

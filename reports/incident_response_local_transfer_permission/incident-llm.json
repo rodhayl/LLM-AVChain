@@ -1,0 +1,857 @@
+{
+  "schema_version": 1,
+  "status": "blocked_or_inconclusive",
+  "evidence_detail": "sanitized_checkpoints",
+  "stages": {
+    "setup": "PASS",
+    "baseline": "PASS",
+    "source.observation": "PASS",
+    "source.analysis": "PASS",
+    "package.publication": "PASS",
+    "node_a.investigation": "PASS",
+    "node_a.rules": "PASS",
+    "node_a.containment": "PASS",
+    "node_a.recovery": "PASS",
+    "node_a.feedback": "PASS",
+    "node_b.investigation": "PASS",
+    "node_b.rules": "PASS",
+    "node_b.containment": "PASS",
+    "node_b.recovery": "PASS",
+    "node_b.feedback": "PASS",
+    "benign.investigation": "PASS",
+    "benign.rules": "PASS",
+    "benign.unchanged": "FAIL",
+    "final": "NOT_RUN"
+  },
+  "nodes": {
+    "node_a": {
+      "incident": {
+        "schema_version": 1,
+        "incident_id": "61648c6d-f86c-4099-8dab-f10cf02c013b",
+        "observed_at": "2026-10-11T14:32:58.593920Z",
+        "artifacts": [
+          {
+            "artifact_id": "038cd98a9563392cb5e6167cc3aa79de18d95cc00bc2dabac7c10cf83bf47125",
+            "path_hash": "7dab7bb88dcd2a9d2b94e6d4dc4a22ae8d9698530a0b0a024248bf5369026fa0",
+            "digest": "2737fbeacdb73cda2a3ee788eeb45c31a23f675bcea15ef831363ab34338a468",
+            "tags": [
+              "file"
+            ],
+            "hook": null,
+            "related_artifact_id": null
+          },
+          {
+            "artifact_id": "548ca1f65fee633034e7cd35e41ec7e6d36e71704f5ab05a9b3c9a96fe4eaa36",
+            "path_hash": "83dd4fff54ce68c4d56e54db418fbdcc98423ba01c340d37b45265315d29c3a5",
+            "digest": "d85df9fcaf33d063f42069d6e424e67cdbf8ba3be31f6826ab6c6c13df2de3b4",
+            "tags": [
+              "file",
+              "install_hook_target",
+              "canary_read",
+              "loopback_egress"
+            ],
+            "hook": null,
+            "related_artifact_id": null
+          },
+          {
+            "artifact_id": "7ae45ad102eab3b6d7e7896acd08c427a9b25b346470d7bc6507b6481575d519",
+            "path_hash": "f3ecc9be029975565675be5ba0ba1475cb131f8fcc4eee3418b8e63ddaa6a322",
+            "digest": "8fbadc6c094714c6c945b28bbc799a0d58d462f9b618d886717dd9d2c69acc4a",
+            "tags": [
+              "file",
+              "install_hook_manifest"
+            ],
+            "hook": "postinstall",
+            "related_artifact_id": "548ca1f65fee633034e7cd35e41ec7e6d36e71704f5ab05a9b3c9a96fe4eaa36"
+          }
+        ],
+        "limitations": []
+      },
+      "analysis": {
+        "backend": "local_llm",
+        "model": "slm-production-evaluation",
+        "prompt_version": "incident-v3",
+        "temperature": 0,
+        "input_digest": "34770c202d6f49c6aa63422411f3cbcbb3121162b43ab9c7f0ffb38fb3c129f0",
+        "output": {
+          "verdict": "suspicious",
+          "evidence_ids": [
+            "038cd98a9563392cb5e6167cc3aa79de18d95cc00bc2dabac7c10cf83bf47125",
+            "548ca1f65fee633034e7cd35e41ec7e6d36e71704f5ab05a9b3c9a96fe4eaa36",
+            "7ae45ad102eab3b6d7e7896acd08c427a9b25b346470d7bc6507b6481575d519"
+          ],
+          "actions": [
+            {
+              "action_id": "quarantine-hook",
+              "artifact_id": "548ca1f65fee633034e7cd35e41ec7e6d36e71704f5ab05a9b3c9a96fe4eaa36"
+            },
+            {
+              "action_id": "disable-hook",
+              "artifact_id": "7ae45ad102eab3b6d7e7896acd08c427a9b25b346470d7bc6507b6481575d519"
+            }
+          ]
+        }
+      },
+      "package_digest": "5b019171c61f1886611fd3be890b5414f03d3703f5fb2bb3f448baae6ab4b027",
+      "source_evidence": [
+        {
+          "source_case_digest": "de50783ee828b79bd77e51e4df7f5c848ac4e59f4cede7fe81d35d8b9d7064db",
+          "source_incident_digest": "d84b516a15ce07a0deccf22a78f68b1656cd56f2ea3a808ae44cc628f3f77d70"
+        }
+      ],
+      "case_context": {
+        "kind": "owned_canary_transfer",
+        "schema_version": 1,
+        "lab_scope": "artificial_data_loopback_only",
+        "resource_artifact_id": "038cd98a9563392cb5e6167cc3aa79de18d95cc00bc2dabac7c10cf83bf47125",
+        "transfer_requires_grant": true,
+        "grant_records_complete": true,
+        "grants": [],
+        "observation": {
+          "actor_artifact_id": "548ca1f65fee633034e7cd35e41ec7e6d36e71704f5ab05a9b3c9a96fe4eaa36",
+          "actor_digest": "d85df9fcaf33d063f42069d6e424e67cdbf8ba3be31f6826ab6c6c13df2de3b4",
+          "actor_path_hash": "83dd4fff54ce68c4d56e54db418fbdcc98423ba01c340d37b45265315d29c3a5",
+          "source": "owned_receiver_during_verified_replay",
+          "receiver": "owned_loopback_receiver",
+          "received_payload_digests": [
+            "2737fbeacdb73cda2a3ee788eeb45c31a23f675bcea15ef831363ab34338a468"
+          ]
+        }
+      },
+      "receipt": {
+        "status": "applied",
+        "incident_id": "61648c6d-f86c-4099-8dab-f10cf02c013b",
+        "package_digest": "5b019171c61f1886611fd3be890b5414f03d3703f5fb2bb3f448baae6ab4b027",
+        "operations": [
+          {
+            "artifact_id": "548ca1f65fee633034e7cd35e41ec7e6d36e71704f5ab05a9b3c9a96fe4eaa36",
+            "before": "d85df9fcaf33d063f42069d6e424e67cdbf8ba3be31f6826ab6c6c13df2de3b4",
+            "operation": "quarantine_file",
+            "after": "absent"
+          },
+          {
+            "artifact_id": "7ae45ad102eab3b6d7e7896acd08c427a9b25b346470d7bc6507b6481575d519",
+            "before": "8fbadc6c094714c6c945b28bbc799a0d58d462f9b618d886717dd9d2c69acc4a",
+            "operation": "disable_npm_hook",
+            "after": "2d07763602af864ce59123820797584ac6e5bda32f82bbbf4e2c6dc810b6c81c"
+          }
+        ]
+      },
+      "after_egress": 0,
+      "recovery": {
+        "status": "rolled_back",
+        "incident_id": "61648c6d-f86c-4099-8dab-f10cf02c013b",
+        "package_digest": "5b019171c61f1886611fd3be890b5414f03d3703f5fb2bb3f448baae6ab4b027",
+        "operations": [
+          {
+            "after": "absent",
+            "artifact_id": "548ca1f65fee633034e7cd35e41ec7e6d36e71704f5ab05a9b3c9a96fe4eaa36",
+            "before": "d85df9fcaf33d063f42069d6e424e67cdbf8ba3be31f6826ab6c6c13df2de3b4",
+            "operation": "quarantine_file"
+          },
+          {
+            "after": "2d07763602af864ce59123820797584ac6e5bda32f82bbbf4e2c6dc810b6c81c",
+            "artifact_id": "7ae45ad102eab3b6d7e7896acd08c427a9b25b346470d7bc6507b6481575d519",
+            "before": "8fbadc6c094714c6c945b28bbc799a0d58d462f9b618d886717dd9d2c69acc4a",
+            "operation": "disable_npm_hook"
+          }
+        ]
+      },
+      "restored_egress": 1,
+      "receipt_evidence_digest": "969a4a7f38c52e99dbef7c10ee698f9377059c2950b487e4c5f840054709c27e"
+    },
+    "node_b": {
+      "incident": {
+        "schema_version": 1,
+        "incident_id": "86d828e5-97d5-4d8c-8000-27afb3584e90",
+        "observed_at": "2026-10-11T14:33:41.041167Z",
+        "artifacts": [
+          {
+            "artifact_id": "038cd98a9563392cb5e6167cc3aa79de18d95cc00bc2dabac7c10cf83bf47125",
+            "path_hash": "f3f516b70ef8fe5264bcea2227d1053e2b97bbd37a80a4d2721170b5f25bddda",
+            "digest": "2737fbeacdb73cda2a3ee788eeb45c31a23f675bcea15ef831363ab34338a468",
+            "tags": [
+              "file"
+            ],
+            "hook": null,
+            "related_artifact_id": null
+          },
+          {
+            "artifact_id": "7ae45ad102eab3b6d7e7896acd08c427a9b25b346470d7bc6507b6481575d519",
+            "path_hash": "b6852637754320320925a18eb70315e918a704220a0c9fff3d5fa77127419988",
+            "digest": "f701bb09bfccc05ddaee553ddaf9c87356885cf2c66f23c7ef73d31f01f5dc8c",
+            "tags": [
+              "file",
+              "install_hook_manifest"
+            ],
+            "hook": "prepare",
+            "related_artifact_id": "1e3b3b9bce69390d24628289d5ebb85cc45b8477b8072d532dc0e4522cf60f87"
+          },
+          {
+            "artifact_id": "1e3b3b9bce69390d24628289d5ebb85cc45b8477b8072d532dc0e4522cf60f87",
+            "path_hash": "8a18652243fd3cda09789e6beb505606c62adfe7844cc6fb100b203440e9b910",
+            "digest": "38951e1a749e691db51e9e54a19483dc3f1cb8fbb55bf689162678876cc7b1f8",
+            "tags": [
+              "file",
+              "install_hook_target",
+              "canary_read",
+              "loopback_egress"
+            ],
+            "hook": null,
+            "related_artifact_id": null
+          }
+        ],
+        "limitations": []
+      },
+      "analysis": {
+        "backend": "local_llm",
+        "model": "slm-production-evaluation",
+        "prompt_version": "incident-v3",
+        "temperature": 0,
+        "input_digest": "8c4413811f8f972007901560fa2b7a9b1f0a6077377dac54371dd401bc0627b2",
+        "output": {
+          "verdict": "suspicious",
+          "evidence_ids": [
+            "038cd98a9563392cb5e6167cc3aa79de18d95cc00bc2dabac7c10cf83bf47125",
+            "7ae45ad102eab3b6d7e7896acd08c427a9b25b346470d7bc6507b6481575d519",
+            "1e3b3b9bce69390d24628289d5ebb85cc45b8477b8072d532dc0e4522cf60f87"
+          ],
+          "actions": [
+            {
+              "action_id": "quarantine-hook",
+              "artifact_id": "1e3b3b9bce69390d24628289d5ebb85cc45b8477b8072d532dc0e4522cf60f87"
+            },
+            {
+              "action_id": "disable-hook",
+              "artifact_id": "7ae45ad102eab3b6d7e7896acd08c427a9b25b346470d7bc6507b6481575d519"
+            }
+          ]
+        }
+      },
+      "package_digest": "5b019171c61f1886611fd3be890b5414f03d3703f5fb2bb3f448baae6ab4b027",
+      "source_evidence": [
+        {
+          "source_case_digest": "de50783ee828b79bd77e51e4df7f5c848ac4e59f4cede7fe81d35d8b9d7064db",
+          "source_incident_digest": "d84b516a15ce07a0deccf22a78f68b1656cd56f2ea3a808ae44cc628f3f77d70"
+        }
+      ],
+      "case_context": {
+        "kind": "owned_canary_transfer",
+        "schema_version": 1,
+        "lab_scope": "artificial_data_loopback_only",
+        "resource_artifact_id": "038cd98a9563392cb5e6167cc3aa79de18d95cc00bc2dabac7c10cf83bf47125",
+        "transfer_requires_grant": true,
+        "grant_records_complete": true,
+        "grants": [],
+        "observation": {
+          "actor_artifact_id": "1e3b3b9bce69390d24628289d5ebb85cc45b8477b8072d532dc0e4522cf60f87",
+          "actor_digest": "38951e1a749e691db51e9e54a19483dc3f1cb8fbb55bf689162678876cc7b1f8",
+          "actor_path_hash": "8a18652243fd3cda09789e6beb505606c62adfe7844cc6fb100b203440e9b910",
+          "source": "owned_receiver_during_verified_replay",
+          "receiver": "owned_loopback_receiver",
+          "received_payload_digests": [
+            "2737fbeacdb73cda2a3ee788eeb45c31a23f675bcea15ef831363ab34338a468"
+          ]
+        }
+      },
+      "receipt": {
+        "status": "applied",
+        "incident_id": "86d828e5-97d5-4d8c-8000-27afb3584e90",
+        "package_digest": "5b019171c61f1886611fd3be890b5414f03d3703f5fb2bb3f448baae6ab4b027",
+        "operations": [
+          {
+            "artifact_id": "1e3b3b9bce69390d24628289d5ebb85cc45b8477b8072d532dc0e4522cf60f87",
+            "before": "38951e1a749e691db51e9e54a19483dc3f1cb8fbb55bf689162678876cc7b1f8",
+            "operation": "quarantine_file",
+            "after": "absent"
+          },
+          {
+            "artifact_id": "7ae45ad102eab3b6d7e7896acd08c427a9b25b346470d7bc6507b6481575d519",
+            "before": "f701bb09bfccc05ddaee553ddaf9c87356885cf2c66f23c7ef73d31f01f5dc8c",
+            "operation": "disable_npm_hook",
+            "after": "2d07763602af864ce59123820797584ac6e5bda32f82bbbf4e2c6dc810b6c81c"
+          }
+        ]
+      },
+      "after_egress": 0,
+      "recovery": {
+        "status": "rolled_back",
+        "incident_id": "86d828e5-97d5-4d8c-8000-27afb3584e90",
+        "package_digest": "5b019171c61f1886611fd3be890b5414f03d3703f5fb2bb3f448baae6ab4b027",
+        "operations": [
+          {
+            "after": "absent",
+            "artifact_id": "1e3b3b9bce69390d24628289d5ebb85cc45b8477b8072d532dc0e4522cf60f87",
+            "before": "38951e1a749e691db51e9e54a19483dc3f1cb8fbb55bf689162678876cc7b1f8",
+            "operation": "quarantine_file"
+          },
+          {
+            "after": "2d07763602af864ce59123820797584ac6e5bda32f82bbbf4e2c6dc810b6c81c",
+            "artifact_id": "7ae45ad102eab3b6d7e7896acd08c427a9b25b346470d7bc6507b6481575d519",
+            "before": "f701bb09bfccc05ddaee553ddaf9c87356885cf2c66f23c7ef73d31f01f5dc8c",
+            "operation": "disable_npm_hook"
+          }
+        ]
+      },
+      "restored_egress": 1,
+      "receipt_evidence_digest": "9fea8c4bee94d6dc53bc325b97a50417aa8c10981281e9c3305aaad6034fdd7a"
+    },
+    "benign": {
+      "incident": {
+        "schema_version": 1,
+        "incident_id": "93b5873e-dc34-4866-9f24-123d29181abe",
+        "observed_at": "2026-10-11T14:34:30.596360Z",
+        "artifacts": [
+          {
+            "artifact_id": "038cd98a9563392cb5e6167cc3aa79de18d95cc00bc2dabac7c10cf83bf47125",
+            "path_hash": "8e002c1bf971e6b81cdf1e76ad0df52f77269e38f80380c261675075f113464e",
+            "digest": "2737fbeacdb73cda2a3ee788eeb45c31a23f675bcea15ef831363ab34338a468",
+            "tags": [
+              "file"
+            ],
+            "hook": null,
+            "related_artifact_id": null
+          },
+          {
+            "artifact_id": "548ca1f65fee633034e7cd35e41ec7e6d36e71704f5ab05a9b3c9a96fe4eaa36",
+            "path_hash": "8ee6a7eb2d9cffd00615099966cb31c2ea67635590543995be02e4b1b40d45f2",
+            "digest": "d85df9fcaf33d063f42069d6e424e67cdbf8ba3be31f6826ab6c6c13df2de3b4",
+            "tags": [
+              "file",
+              "install_hook_target",
+              "canary_read",
+              "loopback_egress"
+            ],
+            "hook": null,
+            "related_artifact_id": null
+          },
+          {
+            "artifact_id": "7ae45ad102eab3b6d7e7896acd08c427a9b25b346470d7bc6507b6481575d519",
+            "path_hash": "1af9f100000af94e8d33ca74f74b89579d3dc7b24e40393a24e495a0fc353064",
+            "digest": "8fbadc6c094714c6c945b28bbc799a0d58d462f9b618d886717dd9d2c69acc4a",
+            "tags": [
+              "file",
+              "install_hook_manifest"
+            ],
+            "hook": "postinstall",
+            "related_artifact_id": "548ca1f65fee633034e7cd35e41ec7e6d36e71704f5ab05a9b3c9a96fe4eaa36"
+          }
+        ],
+        "limitations": []
+      },
+      "analysis": {
+        "backend": "local_llm",
+        "model": "slm-production-evaluation",
+        "prompt_version": "incident-v3",
+        "temperature": 0,
+        "input_digest": "457d8a893a6fa453b5eee8339972b136115948f59a0a7d329cb62fe3f66e498f",
+        "output": {
+          "verdict": "suspicious",
+          "evidence_ids": [
+            "038cd98a9563392cb5e6167cc3aa79de18d95cc00bc2dabac7c10cf83bf47125",
+            "548ca1f65fee633034e7cd35e41ec7e6d36e71704f5ab05a9b3c9a96fe4eaa36",
+            "7ae45ad102eab3b6d7e7896acd08c427a9b25b346470d7bc6507b6481575d519"
+          ],
+          "actions": [
+            {
+              "action_id": "quarantine-hook",
+              "artifact_id": "548ca1f65fee633034e7cd35e41ec7e6d36e71704f5ab05a9b3c9a96fe4eaa36"
+            },
+            {
+              "action_id": "disable-hook",
+              "artifact_id": "7ae45ad102eab3b6d7e7896acd08c427a9b25b346470d7bc6507b6481575d519"
+            }
+          ]
+        }
+      },
+      "package_digest": "5b019171c61f1886611fd3be890b5414f03d3703f5fb2bb3f448baae6ab4b027",
+      "source_evidence": [
+        {
+          "source_case_digest": "de50783ee828b79bd77e51e4df7f5c848ac4e59f4cede7fe81d35d8b9d7064db",
+          "source_incident_digest": "d84b516a15ce07a0deccf22a78f68b1656cd56f2ea3a808ae44cc628f3f77d70"
+        }
+      ],
+      "case_context": {
+        "kind": "owned_canary_transfer",
+        "schema_version": 1,
+        "lab_scope": "artificial_data_loopback_only",
+        "resource_artifact_id": "038cd98a9563392cb5e6167cc3aa79de18d95cc00bc2dabac7c10cf83bf47125",
+        "transfer_requires_grant": true,
+        "grant_records_complete": true,
+        "grants": [
+          {
+            "actor_artifact_id": "548ca1f65fee633034e7cd35e41ec7e6d36e71704f5ab05a9b3c9a96fe4eaa36",
+            "resource_artifact_id": "038cd98a9563392cb5e6167cc3aa79de18d95cc00bc2dabac7c10cf83bf47125",
+            "receiver": "owned_loopback_receiver"
+          }
+        ],
+        "observation": {
+          "actor_artifact_id": "548ca1f65fee633034e7cd35e41ec7e6d36e71704f5ab05a9b3c9a96fe4eaa36",
+          "actor_digest": "d85df9fcaf33d063f42069d6e424e67cdbf8ba3be31f6826ab6c6c13df2de3b4",
+          "actor_path_hash": "8ee6a7eb2d9cffd00615099966cb31c2ea67635590543995be02e4b1b40d45f2",
+          "source": "owned_receiver_during_verified_replay",
+          "receiver": "owned_loopback_receiver",
+          "received_payload_digests": [
+            "2737fbeacdb73cda2a3ee788eeb45c31a23f675bcea15ef831363ab34338a468"
+          ]
+        }
+      }
+    }
+  },
+  "rule_comparison": {
+    "node_a": {
+      "backend": "rules",
+      "model": null,
+      "prompt_version": "incident-v1",
+      "temperature": 0,
+      "input_digest": "34770c202d6f49c6aa63422411f3cbcbb3121162b43ab9c7f0ffb38fb3c129f0",
+      "output": {
+        "verdict": "suspicious",
+        "evidence_ids": [
+          "548ca1f65fee633034e7cd35e41ec7e6d36e71704f5ab05a9b3c9a96fe4eaa36",
+          "7ae45ad102eab3b6d7e7896acd08c427a9b25b346470d7bc6507b6481575d519"
+        ],
+        "actions": [
+          {
+            "action_id": "disable-hook",
+            "artifact_id": "7ae45ad102eab3b6d7e7896acd08c427a9b25b346470d7bc6507b6481575d519"
+          },
+          {
+            "action_id": "quarantine-hook",
+            "artifact_id": "548ca1f65fee633034e7cd35e41ec7e6d36e71704f5ab05a9b3c9a96fe4eaa36"
+          }
+        ]
+      }
+    },
+    "node_b": {
+      "backend": "rules",
+      "model": null,
+      "prompt_version": "incident-v1",
+      "temperature": 0,
+      "input_digest": "8c4413811f8f972007901560fa2b7a9b1f0a6077377dac54371dd401bc0627b2",
+      "output": {
+        "verdict": "suspicious",
+        "evidence_ids": [
+          "1e3b3b9bce69390d24628289d5ebb85cc45b8477b8072d532dc0e4522cf60f87",
+          "7ae45ad102eab3b6d7e7896acd08c427a9b25b346470d7bc6507b6481575d519"
+        ],
+        "actions": [
+          {
+            "action_id": "disable-hook",
+            "artifact_id": "7ae45ad102eab3b6d7e7896acd08c427a9b25b346470d7bc6507b6481575d519"
+          },
+          {
+            "action_id": "quarantine-hook",
+            "artifact_id": "1e3b3b9bce69390d24628289d5ebb85cc45b8477b8072d532dc0e4522cf60f87"
+          }
+        ]
+      }
+    },
+    "benign": {
+      "backend": "rules",
+      "model": null,
+      "prompt_version": "incident-v1",
+      "temperature": 0,
+      "input_digest": "457d8a893a6fa453b5eee8339972b136115948f59a0a7d329cb62fe3f66e498f",
+      "output": {
+        "verdict": "benign",
+        "evidence_ids": [],
+        "actions": []
+      }
+    }
+  },
+  "before_egress": {
+    "node_a": 1,
+    "node_b": 1,
+    "benign": 1
+  },
+  "two_nodes_same_package": true,
+  "current_stage": "benign.unchanged",
+  "code_digest_before": "28d1d6a15b0e1fe837087402bc9031a9c2fc22989a78b6a553dd1b1990adac02",
+  "source_incident": {
+    "schema_version": 1,
+    "incident_id": "7f8a092b-49a1-458e-b823-6c6f78aa300e",
+    "observed_at": "2026-10-11T14:32:10.712383Z",
+    "artifacts": [
+      {
+        "artifact_id": "038cd98a9563392cb5e6167cc3aa79de18d95cc00bc2dabac7c10cf83bf47125",
+        "path_hash": "7dab7bb88dcd2a9d2b94e6d4dc4a22ae8d9698530a0b0a024248bf5369026fa0",
+        "digest": "2737fbeacdb73cda2a3ee788eeb45c31a23f675bcea15ef831363ab34338a468",
+        "tags": [
+          "file"
+        ],
+        "hook": null,
+        "related_artifact_id": null
+      },
+      {
+        "artifact_id": "548ca1f65fee633034e7cd35e41ec7e6d36e71704f5ab05a9b3c9a96fe4eaa36",
+        "path_hash": "83dd4fff54ce68c4d56e54db418fbdcc98423ba01c340d37b45265315d29c3a5",
+        "digest": "d85df9fcaf33d063f42069d6e424e67cdbf8ba3be31f6826ab6c6c13df2de3b4",
+        "tags": [
+          "file",
+          "install_hook_target",
+          "canary_read",
+          "loopback_egress"
+        ],
+        "hook": null,
+        "related_artifact_id": null
+      },
+      {
+        "artifact_id": "7ae45ad102eab3b6d7e7896acd08c427a9b25b346470d7bc6507b6481575d519",
+        "path_hash": "f3ecc9be029975565675be5ba0ba1475cb131f8fcc4eee3418b8e63ddaa6a322",
+        "digest": "8fbadc6c094714c6c945b28bbc799a0d58d462f9b618d886717dd9d2c69acc4a",
+        "tags": [
+          "file",
+          "install_hook_manifest"
+        ],
+        "hook": "postinstall",
+        "related_artifact_id": "548ca1f65fee633034e7cd35e41ec7e6d36e71704f5ab05a9b3c9a96fe4eaa36"
+      }
+    ],
+    "limitations": []
+  },
+  "source_knowledge": {
+    "schema_version": 1,
+    "package_id": "owned-hook-containment",
+    "version": 1,
+    "entry_id": "9566b855-f4cf-4c84-9b0a-8ada98834149",
+    "title": "Contain a validated install-hook canary simulation",
+    "rationale": "Local, reversible containment of a demonstrated lab behavior; not a malware verdict.",
+    "evidence_digests": [
+      "d84b516a15ce07a0deccf22a78f68b1656cd56f2ea3a808ae44cc628f3f77d70"
+    ],
+    "issued_at": "2026-10-11T14:32:10.768411Z",
+    "expires_at": "2026-10-11T15:32:10.768411Z",
+    "actions": [
+      {
+        "action_id": "disable-hook",
+        "operation": "disable_npm_hook",
+        "required_tags": [
+          "install_hook_manifest"
+        ]
+      },
+      {
+        "action_id": "quarantine-hook",
+        "operation": "quarantine_file",
+        "required_tags": [
+          "install_hook_target",
+          "canary_read",
+          "loopback_egress"
+        ]
+      }
+    ],
+    "source_references": [
+      "https://github.com/rodhayl/VSCodeAntivir",
+      "docs/INCIDENT_RESPONSE.md"
+    ]
+  },
+  "source_knowledge_digest": "0ffcddd357952cbec853b0cf5b2ff40af5abe5c1b8c292fee8297eba5b6c0cd4",
+  "source_knowledge_status": "unsigned_draft",
+  "source_context": {
+    "kind": "owned_canary_transfer",
+    "schema_version": 1,
+    "lab_scope": "artificial_data_loopback_only",
+    "resource_artifact_id": "038cd98a9563392cb5e6167cc3aa79de18d95cc00bc2dabac7c10cf83bf47125",
+    "transfer_requires_grant": true,
+    "grant_records_complete": true,
+    "grants": [],
+    "observation": {
+      "actor_artifact_id": "548ca1f65fee633034e7cd35e41ec7e6d36e71704f5ab05a9b3c9a96fe4eaa36",
+      "actor_digest": "d85df9fcaf33d063f42069d6e424e67cdbf8ba3be31f6826ab6c6c13df2de3b4",
+      "actor_path_hash": "83dd4fff54ce68c4d56e54db418fbdcc98423ba01c340d37b45265315d29c3a5",
+      "source": "owned_receiver_during_verified_replay",
+      "receiver": "owned_loopback_receiver",
+      "received_payload_digests": [
+        "2737fbeacdb73cda2a3ee788eeb45c31a23f675bcea15ef831363ab34338a468"
+      ]
+    }
+  },
+  "source_analysis": {
+    "backend": "local_llm",
+    "model": "slm-production-evaluation",
+    "prompt_version": "incident-v3",
+    "temperature": 0,
+    "input_digest": "381103154d45c9768f06d4e78d12f74f1765a1fd446340731d21ecf6702f1116",
+    "output": {
+      "verdict": "suspicious",
+      "evidence_ids": [
+        "038cd98a9563392cb5e6167cc3aa79de18d95cc00bc2dabac7c10cf83bf47125",
+        "548ca1f65fee633034e7cd35e41ec7e6d36e71704f5ab05a9b3c9a96fe4eaa36",
+        "7ae45ad102eab3b6d7e7896acd08c427a9b25b346470d7bc6507b6481575d519"
+      ],
+      "actions": [
+        {
+          "action_id": "quarantine-hook",
+          "artifact_id": "548ca1f65fee633034e7cd35e41ec7e6d36e71704f5ab05a9b3c9a96fe4eaa36"
+        },
+        {
+          "action_id": "disable-hook",
+          "artifact_id": "7ae45ad102eab3b6d7e7896acd08c427a9b25b346470d7bc6507b6481575d519"
+        }
+      ]
+    }
+  },
+  "source_case": {
+    "kind": "avchain-source-case",
+    "schema_version": 1,
+    "incident_digest": "d84b516a15ce07a0deccf22a78f68b1656cd56f2ea3a808ae44cc628f3f77d70",
+    "knowledge": {
+      "schema_version": 1,
+      "package_id": "owned-hook-containment",
+      "version": 1,
+      "entry_id": "9566b855-f4cf-4c84-9b0a-8ada98834149",
+      "title": "Contain a validated install-hook canary simulation",
+      "rationale": "Local, reversible containment of a demonstrated lab behavior; not a malware verdict.",
+      "evidence_digests": [
+        "d84b516a15ce07a0deccf22a78f68b1656cd56f2ea3a808ae44cc628f3f77d70"
+      ],
+      "issued_at": "2026-10-11T14:32:10.768411Z",
+      "expires_at": "2026-10-11T15:32:10.768411Z",
+      "actions": [
+        {
+          "action_id": "disable-hook",
+          "operation": "disable_npm_hook",
+          "required_tags": [
+            "install_hook_manifest"
+          ]
+        },
+        {
+          "action_id": "quarantine-hook",
+          "operation": "quarantine_file",
+          "required_tags": [
+            "install_hook_target",
+            "canary_read",
+            "loopback_egress"
+          ]
+        }
+      ],
+      "source_references": [
+        "https://github.com/rodhayl/VSCodeAntivir",
+        "docs/INCIDENT_RESPONSE.md"
+      ]
+    },
+    "analysis": {
+      "backend": "local_llm",
+      "model": "slm-production-evaluation",
+      "prompt_version": "incident-v3",
+      "temperature": 0,
+      "input_digest": "381103154d45c9768f06d4e78d12f74f1765a1fd446340731d21ecf6702f1116",
+      "output": {
+        "verdict": "suspicious",
+        "explanation": "",
+        "evidence_ids": [
+          "038cd98a9563392cb5e6167cc3aa79de18d95cc00bc2dabac7c10cf83bf47125",
+          "548ca1f65fee633034e7cd35e41ec7e6d36e71704f5ab05a9b3c9a96fe4eaa36",
+          "7ae45ad102eab3b6d7e7896acd08c427a9b25b346470d7bc6507b6481575d519"
+        ],
+        "inferences": [],
+        "actions": [
+          {
+            "action_id": "quarantine-hook",
+            "artifact_id": "548ca1f65fee633034e7cd35e41ec7e6d36e71704f5ab05a9b3c9a96fe4eaa36"
+          },
+          {
+            "action_id": "disable-hook",
+            "artifact_id": "7ae45ad102eab3b6d7e7896acd08c427a9b25b346470d7bc6507b6481575d519"
+          }
+        ]
+      }
+    },
+    "case_context": {
+      "kind": "owned_canary_transfer",
+      "schema_version": 1,
+      "lab_scope": "artificial_data_loopback_only",
+      "resource_artifact_id": "038cd98a9563392cb5e6167cc3aa79de18d95cc00bc2dabac7c10cf83bf47125",
+      "transfer_requires_grant": true,
+      "grant_records_complete": true,
+      "grants": [],
+      "observation": {
+        "actor_artifact_id": "548ca1f65fee633034e7cd35e41ec7e6d36e71704f5ab05a9b3c9a96fe4eaa36",
+        "actor_digest": "d85df9fcaf33d063f42069d6e424e67cdbf8ba3be31f6826ab6c6c13df2de3b4",
+        "actor_path_hash": "83dd4fff54ce68c4d56e54db418fbdcc98423ba01c340d37b45265315d29c3a5",
+        "source": "owned_receiver_during_verified_replay",
+        "receiver": "owned_loopback_receiver",
+        "received_payload_digests": [
+          "2737fbeacdb73cda2a3ee788eeb45c31a23f675bcea15ef831363ab34338a468"
+        ]
+      }
+    }
+  },
+  "package": {
+    "package": {
+      "schema_version": 1,
+      "package_id": "owned-hook-containment",
+      "version": 1,
+      "entry_id": "9566b855-f4cf-4c84-9b0a-8ada98834149",
+      "title": "Contain a validated install-hook canary simulation",
+      "rationale": "Local, reversible containment of a demonstrated lab behavior; not a malware verdict.",
+      "evidence_digests": [
+        "d84b516a15ce07a0deccf22a78f68b1656cd56f2ea3a808ae44cc628f3f77d70",
+        "de50783ee828b79bd77e51e4df7f5c848ac4e59f4cede7fe81d35d8b9d7064db"
+      ],
+      "issued_at": "2026-10-11T14:32:10.768411Z",
+      "expires_at": "2026-10-11T15:32:10.768411Z",
+      "actions": [
+        {
+          "action_id": "disable-hook",
+          "operation": "disable_npm_hook",
+          "required_tags": [
+            "install_hook_manifest"
+          ]
+        },
+        {
+          "action_id": "quarantine-hook",
+          "operation": "quarantine_file",
+          "required_tags": [
+            "install_hook_target",
+            "canary_read",
+            "loopback_egress"
+          ]
+        }
+      ],
+      "source_references": [
+        "https://github.com/rodhayl/VSCodeAntivir",
+        "docs/INCIDENT_RESPONSE.md"
+      ]
+    },
+    "approvals": [
+      {
+        "validator_id": "validator1",
+        "signature": "FEHllBZcl+pGscTOB5UORe3XsfiSpiZbm21WX0HX2+JQ6fzdWPReIW+1FuBLkeyz8n5Vz+UsYml0YeCCWw97BA=="
+      },
+      {
+        "validator_id": "validator2",
+        "signature": "NQ+44oSTPMGvhIyA7AKjHwdfvgxRSZwGhKQTTdTKMKaAQEqevoYo4+DdMyQf0pJJwdc5wSeW7hbHD+JzyWtcAg=="
+      }
+    ]
+  },
+  "package_digest": "5b019171c61f1886611fd3be890b5414f03d3703f5fb2bb3f448baae6ab4b027",
+  "validator_public_keys": {
+    "validator1": "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEALq3yfKh9RltF2lk/sTvDdM01fj9+N6gRob/b0xnGHr4=\n-----END PUBLIC KEY-----\n",
+    "validator2": "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEAXFRNU6EsPRJxQU/FvRlcdBFQxrJd0EwjUcDn9R9OGWg=\n-----END PUBLIC KEY-----\n"
+  },
+  "code_digest_after": "28d1d6a15b0e1fe837087402bc9031a9c2fc22989a78b6a553dd1b1990adac02",
+  "node_b_code_changed": false,
+  "failure": {
+    "stage": "benign.unchanged"
+  },
+  "error": "Laboratory stage failed; see structured failure evidence",
+  "error_type": "ValueError",
+  "cause": null,
+  "mode": "local_llm",
+  "model": "slm-production-evaluation",
+  "real_model_executed": true,
+  "model_http_responses": 4,
+  "validated_model_outputs": 4,
+  "fallback_used": false,
+  "model_configuration": {
+    "model": "slm-production-evaluation",
+    "timeout_seconds": 300.0,
+    "timeout_scope": "per_request_wall_clock",
+    "max_tokens": 3072,
+    "response_format": "json_schema",
+    "temperature": 0,
+    "max_retries": 0,
+    "reasoning": "off_requested",
+    "reasoning_effort": "none"
+  },
+  "model_request_diagnostics": [
+    {
+      "max_tokens": 3072,
+      "timeout_seconds": 300.0,
+      "prompt_utf8_bytes": 6143,
+      "http_status": 200,
+      "finish_reason": "stop",
+      "usage": {
+        "prompt_tokens": 2332,
+        "completion_tokens": 722,
+        "total_tokens": 3054,
+        "reasoning_tokens": 0
+      },
+      "content_utf8_bytes": 1457,
+      "reasoning_utf8_bytes": {
+        "reasoning_content": 0
+      },
+      "reasoning_effort": "none",
+      "elapsed_seconds": 47.607,
+      "reasoning_observation": "zero_reasoning_reported",
+      "prompt_version": "incident-v3",
+      "system_prompt_sha256": "5e5a85a67332d0871fac1007579c6e3a1e6bae169274756296f0fc927ac152f0",
+      "structured_output_validated": true
+    },
+    {
+      "max_tokens": 3072,
+      "timeout_seconds": 300.0,
+      "prompt_utf8_bytes": 10154,
+      "http_status": 200,
+      "finish_reason": "stop",
+      "usage": {
+        "prompt_tokens": 4710,
+        "completion_tokens": 637,
+        "total_tokens": 5347,
+        "reasoning_tokens": 0
+      },
+      "content_utf8_bytes": 1313,
+      "reasoning_utf8_bytes": {
+        "reasoning_content": 0
+      },
+      "reasoning_effort": "none",
+      "elapsed_seconds": 42.195,
+      "reasoning_observation": "zero_reasoning_reported",
+      "prompt_version": "incident-v3",
+      "system_prompt_sha256": "5e5a85a67332d0871fac1007579c6e3a1e6bae169274756296f0fc927ac152f0",
+      "structured_output_validated": true
+    },
+    {
+      "max_tokens": 3072,
+      "timeout_seconds": 300.0,
+      "prompt_utf8_bytes": 10207,
+      "http_status": 200,
+      "finish_reason": "stop",
+      "usage": {
+        "prompt_tokens": 4745,
+        "completion_tokens": 779,
+        "total_tokens": 5524,
+        "reasoning_tokens": 0
+      },
+      "content_utf8_bytes": 1622,
+      "reasoning_utf8_bytes": {
+        "reasoning_content": 0
+      },
+      "reasoning_effort": "none",
+      "elapsed_seconds": 49.308,
+      "reasoning_observation": "zero_reasoning_reported",
+      "prompt_version": "incident-v3",
+      "system_prompt_sha256": "5e5a85a67332d0871fac1007579c6e3a1e6bae169274756296f0fc927ac152f0",
+      "structured_output_validated": true
+    },
+    {
+      "max_tokens": 3072,
+      "timeout_seconds": 300.0,
+      "prompt_utf8_bytes": 10374,
+      "http_status": 200,
+      "finish_reason": "stop",
+      "usage": {
+        "prompt_tokens": 4858,
+        "completion_tokens": 563,
+        "total_tokens": 5421,
+        "reasoning_tokens": 0
+      },
+      "content_utf8_bytes": 1389,
+      "reasoning_utf8_bytes": {
+        "reasoning_content": 0
+      },
+      "reasoning_effort": "none",
+      "elapsed_seconds": 41.72,
+      "reasoning_observation": "zero_reasoning_reported",
+      "prompt_version": "incident-v3",
+      "system_prompt_sha256": "5e5a85a67332d0871fac1007579c6e3a1e6bae169274756296f0fc927ac152f0",
+      "structured_output_validated": true
+    }
+  ],
+  "model_reasoning_capability": {
+    "loaded_instance_id": "slm-production-evaluation",
+    "off_supported": true,
+    "source": "/api/v1/models"
+  }
+}

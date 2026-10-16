@@ -1,0 +1,40 @@
+%% Semantic source. The companion SVG/PNG uses render_diagrams.py for stable layout.
+%% Aligned with the incident flow contracts; see README.md for limits.
+flowchart LR
+  U["Datos externos sin confianza\nArchivos, eventos y texto del incidente"]
+  subgraph A["Nodo A · primera observación"]
+    C["IncidentCollector\nRaíz permitida; lectura acotada; evidencia y hashes"]
+    T["IncidentTriage\nLLM local + catálogo previo; propone bindings sin autoridad"]
+    P["RemediationPackage\nBorrador del operador; evidencia de A; versión y acciones fijas"]
+    C --> T
+    P -->|"catálogo previo"| T
+    T -->|"enriquece con análisis"| P
+  end
+  subgraph S["Centro compartido · validación"]
+    V["ValidatorApproval\nValidadores de confianza; firmas Ed25519"]
+    K["KnowledgeStore\nQuórum; firmas; TTL; revocación; versión monotónica; entrada confirmed y evidencia"]
+    D[("Ledger SQL + evidencia\nPlan aprobado e historial")]
+    V --> K --> D
+  end
+  subgraph B["Nodo B · variante local"]
+    N["IncidentNode\nKnowledgeClient verifica firma y versión; IncidentTriage propone bindings locales"]
+    L["LocalApproval\nIncidente, paquete, bindings, raíz, caducidad; externa al modelo"]
+    X["ScopedExecutor\ndisable_npm_hook / quarantine_file\nHashes exactos; journal; precheck → aplicar → postcheck"]
+    R["Ante fallo\nRestaurar estado previo y registrar el resultado"]
+    N --> L --> X
+    X -->|"fallo de postcheck"| R
+  end
+  U --> C
+  U -->|"variante"| N
+  P --> V
+  K -->|"paquete aprobado"| N
+  X -.->|"resultado y nueva evidencia"| D
+  R -.->|"resultado del rollback"| D
+  classDef untrusted fill:#FFF3E2,stroke:#A56110,color:#152B43;
+  classDef local fill:#E5F3FA,stroke:#147CAA,color:#152B43;
+  classDef shared fill:#EFEAFA,stroke:#7455B7,color:#152B43;
+  classDef executor fill:#E5F3ED,stroke:#247C66,color:#152B43;
+  class U untrusted;
+  class C,T,P local;
+  class V,K,D shared;
+  class N,L,X,R executor;

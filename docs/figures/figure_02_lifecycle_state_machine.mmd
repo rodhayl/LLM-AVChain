@@ -1,0 +1,8 @@
+%% Mermaid diagram: Lifecycle State Machine
+stateDiagram-v2
+    [*] --> Suspected
+    Suspected --> Confirmed: Promote (quorum)
+    Confirmed --> Review: Coverage signal or conflict
+    Review --> Confirmed: Reconfirm (quorum)
+    Review --> Deprecated: Deprecate (quorum)
+    Deprecated --> Suspected: Reactivate with new evidence
